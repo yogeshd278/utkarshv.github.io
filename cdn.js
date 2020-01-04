@@ -54,11 +54,11 @@ navigator.serviceWorker.register('sw.js')
         });
 
         function sendTokenToServer({ token, clientId }) {
+            console.log("resquest sent for token", token)
             return;
             /*
             const url = 'https://192.168.100.16:9000/insertToken';
             if (!token || !clientId || !url) return;
-            console.log("resquest sent for token", token)
             fetch(url, {
                 headers: {
                     'Content-type': 'application/json'

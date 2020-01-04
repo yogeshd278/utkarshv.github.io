@@ -3,23 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FCM</title>
+    <title>Demo Push Client</title>
     <link rel="manifest" href="/manifest.json" />
   </head>
 
   <body>
     <div>
-      Push Client
+        <a href="yourLink"  target="popup"  onclick="window.open('http://utkarshv.github.io?clientid=0123456789','popup','width=200,height=200,scrollbars=no,resizable=no'); return false;">
+        Request Push Permission
+        </a>
     </div>
-    <script>
-      function popitup(url, windowName) {
-        newwindow = window.open(url, windowName, "height=200,width=150");
-        if (window.focus) {
-          newwindow.focus();
-        }
-        return false;
-      }
-      popitup("http://utkarshv.github.io", "push");
-    </script>
   </body>
 </html>

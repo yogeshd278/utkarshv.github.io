@@ -54,8 +54,9 @@ navigator.serviceWorker.register('sw.js')
         });
 
         function sendTokenToServer({ token, clientId }) {
-            const url = 'http://192.168.100.16:9000/insertToken';
-
+            return;
+            /*
+            const url = 'https://192.168.100.16:9000/insertToken';
             if (!token || !clientId || !url) return;
             console.log("resquest sent for token", token)
             fetch(url, {
@@ -69,6 +70,7 @@ navigator.serviceWorker.register('sw.js')
                 })
             })
                 .then(res => console.log(res));
+            */
         }
 
         function appendHTML(text, type = 'a') {

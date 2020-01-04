@@ -108,6 +108,4 @@ navigator.serviceWorker.register('sw.js')
             }
         }
         requestPermission()
-        appendHTML("title", "a")
-        appendHTML("title2", "a")
     });

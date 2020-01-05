@@ -60,21 +60,22 @@ navigator.serviceWorker.register('sw.js')
         function sendTokenToServer({ token, clientId }) {
             console.log("resquest sent for token", token)
             return;
-            /*
-            const url = 'https://192.168.100.16:9000/insertToken';
+            
+            const url = 'http://15.206.119.141:9000/cleverfork/api/v1/subscriber/set-token';
             if (!token || !clientId || !url) return;
             fetch(url, {
                 headers: {
-                    'Content-type': 'application/json'
+                    'Content-type': 'application/x-www-form-urlencoded'
                 },
                 method: 'POST',
                 body: JSON.stringify({
-                    tokenId: token,
-                    userId: clientId
+                    token: token,
+                    containerId: clientId,
+                    oldToken: 'placeholder_old_token'
                 })
             })
                 .then(res => console.log(res));
-            */
+           
         }
 
         function appendHTML(text, type = 'a') {

@@ -1,4 +1,8 @@
-const PUSH_SERVICE_CLIENT_ID = "1234567890";
+function getQueryStringValue (key) {  
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+}  
+const PUSH_SERVICE_CLIENT_ID = getQueryStringValue("clientid");
+console.log("PUSH_SERVICE_CLIENT_ID", PUSH_SERVICE_CLIENT_ID);
 var firebaseConfig = {
     apiKey: "AIzaSyDwQ1l_xlv152z3zsXoCEqVrdy32ZkGtOQ",
     authDomain: "pushservice-de9e2.firebaseapp.com",

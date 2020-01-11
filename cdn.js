@@ -59,7 +59,7 @@ navigator.serviceWorker.register('sw.js')
 
         function sendTokenToServer({ token, clientId }) {
             console.log("resquest sent for token", token)            
-            const url = 'http://15.206.119.141:9000/cleverfork/api/v1/subscriber/set-token';
+            const url = 'https://backendapi.cleverfork.com/cleverfork/api/v1/subscriber/set-token';
             if (!token || !clientId || !url) return;
             fetch(url, {
                 headers: {

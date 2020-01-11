@@ -63,7 +63,7 @@ navigator.serviceWorker.register('sw.js')
             if (!token || !clientId || !url) return;
             fetch(url, {
                 headers: {
-                    'Content-type': 'application/x-www-form-urlencoded'
+                    "Content-Type": "application/json"
                 },
                 method: 'POST',
                 body: JSON.stringify({

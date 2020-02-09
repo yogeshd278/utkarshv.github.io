@@ -2,6 +2,7 @@ function getQueryStringValue (key) {
   return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
 }  
 const PUSH_SERVICE_CLIENT_ID = getQueryStringValue("clientid");
+const PUSH_BROWSER_ID = getQueryStringValue("browserId");
 console.log("PUSH_SERVICE_CLIENT_ID", PUSH_SERVICE_CLIENT_ID);
 var firebaseConfig = {
     apiKey: "AIzaSyDwQ1l_xlv152z3zsXoCEqVrdy32ZkGtOQ",
@@ -26,7 +27,8 @@ navigator.serviceWorker.register('sw.js')
                         if (currentToken) {
                             sendTokenToServer({
                                 clientId: PUSH_SERVICE_CLIENT_ID,
-                                token: currentToken
+                                token: currentToken,
+                                browserId: PUSH_BROWSER_ID
                             })
                         } else {
                             console.log('No Instance ID token available. Request permission to generate one.');
@@ -57,7 +59,7 @@ navigator.serviceWorker.register('sw.js')
             console.log('Message received. ', payload);
         });
 
-        function sendTokenToServer({ token, clientId }) {
+        function sendTokenToServer({ token, clientId, browserId }) {
             console.log("resquest sent for token", token)            
             const url = 'https://backendapi.cleverfork.com/cleverfork/api/v1/subscriber/set-token';
             if (!token || !clientId || !url) return;
@@ -69,7 +71,8 @@ navigator.serviceWorker.register('sw.js')
                 body: JSON.stringify({
                     token: token,
                     containerId: clientId,
-                    oldToken: 'placeholder_old_token'
+                    oldToken: 'placeholder_old_token',
+                    browserId
                 })
             })
                 .then(res => console.log(res));

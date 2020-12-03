@@ -22,6 +22,7 @@ navigator.serviceWorker.register('sw.js')
         messaging.useServiceWorker(registration);
         function requestPermission() {
             Notification.requestPermission().then(function (permission) {
+                console.log('permission :: ', permission)
                 if (permission === 'granted') {
                     messaging.getToken().then(function (currentToken) {
                         if (currentToken) {

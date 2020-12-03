@@ -38,6 +38,7 @@ navigator.serviceWorker.register('sw.js')
                         console.log('An error occurred while retrieving token. ', err);
                     });
                 } else {
+                    console.log('permission :: ', permission)
                     console.log('Unable to get permission to notify.');
                 }
             });
